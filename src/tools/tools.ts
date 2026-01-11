@@ -53,7 +53,9 @@ export function createBackgroundTask(
         .describe("Full detailed prompt for the agent"),
       agent: tool.schema
         .string()
-        .describe("Agent type to use (any registered agent)"),
+        .describe(
+          "Agent to use: 'explore' (codebase research - PREFERRED), 'librarian' (external docs/repos), 'oracle' (code review), 'general' (implementation only - expensive)"
+        ),
     },
     async execute(args: BackgroundTaskArgs, toolContext) {
       const ctx = toolContext as ToolContextWithMetadata
